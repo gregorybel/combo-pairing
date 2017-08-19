@@ -1,4 +1,6 @@
 ## combo-pairing
+
+[![Join the chat at https://gitter.im/gregorybel/combo-pairing](https://badges.gitter.im/gregorybel/combo-pairing.svg)](https://gitter.im/gregorybel/combo-pairing?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Solutions to move away pairing issue on new android phone with combo pump
 
 The problem:
