@@ -11,24 +11,24 @@ Pairing needs to be done only time and purpose is only to generate a so called l
 
 What you need:
 - one phone with android 4.1 (phone1)
-- On this find install: [mac changer]
-- Phone you want to sue with your pump, what ever the Android version (phone2)
-- Attention: both phone need to be rooted
-- Both phone with ruffy installed: https://github.com/monkey-r/ruffy
+- On this phone install: [mac changer]
+- Phone you want to use with your pump, what ever the Android version (phone2)
+- Attention: both phones need to be rooted
+- Both phones with ruffy installed: https://github.com/monkey-r/ruffy
 - Developer mode and debug over USB activated
 - Option: Titanium backup
 
 
 Howto:
 - Note bluetooh mac adress from phone 2 (Settings/About phone/State/Blueooth adress)
-- Swith off Bluetooth on both phones
-- On phone 1, use MAC CHANGER and modify bluetooth mac adresse to the one fron phone 2
+- Switch off Bluetooth on both phones
+- On phone 1, use MAC CHANGER and modify bluetooth mac address to the one from phone 2
 - Reboot phone 1
 
 - Enable Bluetooth on phone 1
 - Check that phone 1 has Mac @ from phone 2
 - Pair phone 1 with combo pump as stated into ruffy
-- Note combo mac adress (displayed into ruffy log window right at the beginning)
+- Note combo mac address (displayed into ruffy log window right at the beginning)
 - Open terminal
 adb shell
 su
@@ -47,15 +47,15 @@ Swap byte wise reverse order:
 - Disable BT on phone 1
 - Kill ruffy
 - Copy from phone 1 /data/data/org.monkey.d.ruffy.ruffy/shared_prefs/pumpdata.xml to same location on phone 2
-- [OR] you may want to use Titanium Backup and back data from ruffy, transfer backupo to phone 2 ans restore it
-* When I do it, I use dropbox to updload/Download backup file
+- [OR] you may want to use Titanium Backup and backup data from ruffy, transfer backup to phone 2 and restore it
+* When I do it, I use dropbox to updload/download backup file
 
 - Connect phone 2 to PC:
 adb shell
 su
 vi /data/misc/bluedroid/bt_config.conf
 
-Past this:
+Past this after having modify COMBO_MAC_LOWER_CASE and LINKKEY:
 [COMBO_MAC_LOWER_CASE]
 Timestamp = 1476801455
 DevClass = 001f00
@@ -74,7 +74,7 @@ Exit vi and save: ':wq'
 
 - reboot
 - reenable BT on phone 2
-- Into the BT stettings, you should see as device "SpiritCombo"
+- Into the BT stettings, you should see a new device "SpiritCombo"
 - Kill ruffy
 - copy /data/data/org.monkey.d.ruffy.ruffy/shared_prefs/pumpdata.xml on phone 2 
 - Open ruffy and click "connect"
