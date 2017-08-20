@@ -4,25 +4,25 @@
 Solutions to move away pairing issue on new android phone with combo pump
 
 The problem:
-Since Android 4.1, google move bt stack from bluez to broadcom. For unknown reasons this stack has a bug during pairing: device name will be broadcasted wil a \0 terminated character. The combo pump can't deal with that and that is the reason why combo can#t find phone.
+Since Android 4.1, google moves bt stack from bluez to broadcom. For unknown reasons this stack has a bug during pairing: device's name will be broadcasted with a \0 terminated character. The combo pump can't deal with that and that is the reason why combo can't find phone.
 
 Concept to move away from this problem:
-Pairing needs to be done only time and purpose is only to generate a so called linkkey which will be stored on both devices (phone and pump). Linkkey is generated using both mac adresses, pin code and some keys generated during pairing. So if we manage somehow to pair pump with one device and then move this linkkey to another device then pump will accept pairing from second device! This took my some time but it works! This is what I will explan in this readme.
+Pairing needs to be done only time and purpose is only to generate a so called linkkey which will be stored on both devices (phone and pump). Linkkey is generated using both mac addresses, pin code and some keys generated during pairing. So if we manage somehow to pair pump with one device and then move this linkkey to another device then pump will accept pairing from second device! This took my some time but it works! This is what I will explan in this readme.
 
 What you need:
-- one phone with android 4.1 (phone1)
+- one phone with android 4.1 (phone 1)
 - On this phone install: [mac changer]
-- Phone you want to use with your pump, what ever the Android version (phone2)
-- Attention: both phones need to be rooted
+- Phone you want to use with your pump, what ever the Android version (phone 2)
+- Attention: both phones need to be rooted!
 - Both phones with ruffy installed: https://github.com/monkey-r/ruffy
 - Developer mode and debug over USB activated
-- Option: Titanium backup
+- Option: Titanium backup installed
 
 
 Howto:
-- Note bluetooh mac adress from phone 2 (Settings/About phone/State/Blueooth adress)
+- Note bluetooh mac address from phone 2 (Settings/About phone/State/Bluetooth address)
 - Switch off Bluetooth on both phones
-- On phone 1, use MAC CHANGER and modify bluetooth mac address to the one from phone 2
+- On phone 1, use MAC CHANGER and modify Bluetooth mac address to the one from phone 2
 - Reboot phone 1
 
 - Enable Bluetooth on phone 1
@@ -47,7 +47,7 @@ Make lower case:
 1d44b76c0ccdd88357073475c7d13b6d
 ```
 
-Swap byte wise reverse order:
+Swap bytewise reverse order:
 ```
 6d3bd1c77534075783d8cd0c6cb7441d
 ```
@@ -56,7 +56,7 @@ Swap byte wise reverse order:
 - Kill ruffy
 - Copy from phone 1 /data/data/org.monkey.d.ruffy.ruffy/shared_prefs/pumpdata.xml to same location on phone 2
 - [OR] you may want to use Titanium Backup and backup data from ruffy, transfer backup to phone 2 and restore it
-* When I do it, I use dropbox to updload/download backup file
+* When I do it, I use dropbox to upload/download backup file (only data)
 
 - Connect phone 2 to PC:
 ```
@@ -65,9 +65,9 @@ su
 vi /data/misc/bluedroid/bt_config.conf
 ```
 
-Past this after having modify COMBO_MAC_LOWER_CASE and LINKKEY:
+Past this after having modify COMBO_MAC_LOWER_CASE and Linkkey:
 ```
-[COMBO_MAC_LOWER_CASE]
+[XX:XX:XX:XX:XX:XX]
 Timestamp = 1476801455
 DevClass = 001f00
 DevType = 1
@@ -86,9 +86,10 @@ Exit vi and save: ':wq'
 
 - reboot
 - reenable BT on phone 2
-- Into the BT stettings, you should see a new device "SpiritCombo"
+- Into the BT settings, you should see a new device "SpiritCombo"
 - Kill ruffy
-- copy /data/data/org.monkey.d.ruffy.ruffy/shared_prefs/pumpdata.xml on phone 2 
+- copy /data/data/org.monkey.d.ruffy.ruffy/shared_prefs/pumpdata.xml on phone 2 (if no yet done)
 - Open ruffy and click "connect"
+- Phone 2 should be connected to pump!
 
 If not working, let me know on gitter!
