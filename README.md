@@ -11,7 +11,6 @@ Pairing needs to be done only time and purpose is only to generate a so called l
 
 What you need:
 - one phone with android 4.1 (phone 1)
-- On this phone install: [mac changer]
 - Phone you want to use with your pump, what ever the Android version (phone 2)
 - Attention: both phones need to be rooted!
 - Both phones with ruffy installed: https://github.com/monkey-r/ruffy
@@ -22,7 +21,15 @@ What you need:
 Howto:
 - Note bluetooh mac address from phone 2 (Settings/About phone/State/Bluetooth address)
 - Switch off Bluetooth on both phones
-- On phone 1, use MAC CHANGER and modify Bluetooth mac address to the one from phone 2
+- On phone 1, modify Bluetooth mac address to the one from phone 2
+```
+adb shell
+su
+vi /efs/bluetooth/bt_addr
+'insert'
+-> change mac
+:wq
+```
 - Reboot phone 1
 
 - Enable Bluetooth on phone 1
