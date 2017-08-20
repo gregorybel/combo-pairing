@@ -30,19 +30,27 @@ Howto:
 - Pair phone 1 with combo pump as stated into ruffy
 - Note combo mac address (displayed into ruffy log window right at the beginning)
 - Open terminal
+```
 adb shell
 su
 cat /data/misc/bluetoothd/[new mac adress]/linkkeys
 XX:XX:XX:XX:XX:XX 1D44B76C0CCDD88357073475C7D13B6D 4 0
+```
 
 16 bytes number is the linkkey, note the linkkey corresponding to combo mac adress:
+```
 1D44B76C0CCDD88357073475C7D13B6D
+```
 
 Make lower case:
+```
 1d44b76c0ccdd88357073475c7d13b6d
+```
 
 Swap byte wise reverse order:
+```
 6d3bd1c77534075783d8cd0c6cb7441d
+```
 
 - Disable BT on phone 1
 - Kill ruffy
@@ -51,11 +59,14 @@ Swap byte wise reverse order:
 * When I do it, I use dropbox to updload/download backup file
 
 - Connect phone 2 to PC:
+```
 adb shell
 su
 vi /data/misc/bluedroid/bt_config.conf
+```
 
 Past this after having modify COMBO_MAC_LOWER_CASE and LINKKEY:
+```
 [COMBO_MAC_LOWER_CASE]
 Timestamp = 1476801455
 DevClass = 001f00
@@ -69,6 +80,7 @@ LinkKeyType = 0
 PinLength = 16
 LinkKey = 6d3bd1c77534075783d8cd0c6cb7441d
 Service = 00001101-0000-1000-8000-00805f9b34fb 00000000-0000-1000-8000-00805f9b3
+```
 
 Exit vi and save: ':wq'
 
@@ -80,19 +92,3 @@ Exit vi and save: ':wq'
 - Open ruffy and click "connect"
 
 If not working, let me know on gitter!
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
