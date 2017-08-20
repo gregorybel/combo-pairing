@@ -1,7 +1,7 @@
 ## combo-pairing
 
 [![Join the chat at https://gitter.im/gregorybel/combo-pairing](https://badges.gitter.im/gregorybel/combo-pairing.svg)](https://gitter.im/gregorybel/combo-pairing?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-Solutions to move away pairing issue on new android phone with combo pump
+Solutions to move away pairing issue on new android phone with Roche combo pump
 
 The problem:
 Since Android 4.1, google moves bt stack from bluez to broadcom. For unknown reasons this stack has a bug during pairing: device's name will be broadcasted with a \0 terminated character. The combo pump can't deal with that and that is the reason why combo can't find phone.
