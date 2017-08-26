@@ -19,32 +19,32 @@ What you need:
 
 
 Howto:
-- Note bluetooh mac address from phone 2 (Settings/About phone/State/Bluetooth address)
+- Note bluetooh MAC address from phone 2 (Settings/About phone/State/Bluetooth address)
 - Switch off Bluetooth on both phones
-- On phone 1, modify Bluetooth mac address to the one from phone 2
+- On phone 1, modify Bluetooth MAC address to the one from phone 2
 ```
 adb shell
 su
 vi /efs/bluetooth/bt_addr
 'insert'
--> change mac
+-> change MAC
 :wq
 ```
 - Reboot phone 1
 
 - Enable Bluetooth on phone 1
 - Check that phone 1 has Mac @ from phone 2
-- Pair phone 1 with combo pump as stated into ruffy
-- Note combo mac address (displayed into ruffy log window right at the beginning)
+- Pair phone 1 with Combo pump as stated into ruffy
+- Note Combo MAC address (displayed into ruffy log window right at the beginning)
 - Open terminal
 ```
 adb shell
 su
-cat /data/misc/bluetoothd/[new mac adress]/linkkeys
+cat /data/misc/bluetoothd/[new MAC address]/linkkeys
 XX:XX:XX:XX:XX:XX 1D44B76C0CCDD88357073475C7D13B6D 4 0
 ```
 
-16 bytes number is the linkkey, note the linkkey corresponding to combo mac adress:
+16 bytes number is the linkkey, note the linkkey corresponding to Combo MAC address:
 ```
 1D44B76C0CCDD88357073475C7D13B6D
 ```
