@@ -10,7 +10,7 @@ Concept to move away from this problem:
 Pairing needs to be done only time and purpose is only to generate a so called linkkey which will be stored on both devices (phone and pump). Linkkey is generated using both mac addresses, pin code and some keys generated during pairing. So if we manage somehow to pair pump with one device and then move this linkkey to another device then pump will accept pairing from second device! This took my some time but it works! This is what I will explan in this readme.
 
 What you need:
-- one phone with android 4.1 (phone 1)
+- one phone with android 4.1 or any LineageOS 14.1 (phone 1)
 - Phone you want to use with your pump, what ever the Android version (phone 2)
 - Attention: both phones need to be rooted!
 - Both phones with ruffy installed: https://github.com/monkey-r/ruffy
