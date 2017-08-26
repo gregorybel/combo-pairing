@@ -73,7 +73,7 @@ su
 vi /data/misc/bluedroid/bt_config.conf
 ```
 
-Past this after having modify COMBO_MAC_LOWER_CASE and Linkkey:
+Past this after having modified COMBO_MAC_LOWER_CASE and Linkkey:
 ```
 [XX:XX:XX:XX:XX:XX]
 Timestamp = 1476801455
