@@ -58,7 +58,7 @@ Swap bytewise reverse order:
 ```
 6d3bd1c77534075783d8cd0c6cb7441d
 ```
-![alt text](http://i.imgur.com/IMmUu0g.png
+![alt text](http://i.imgur.com/IMmUu0g.png)
 
 - Disable BT on phone 1
 - Kill ruffy
