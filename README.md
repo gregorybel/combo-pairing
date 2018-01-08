@@ -10,7 +10,7 @@ Concept to move away from this problem:
 Pairing needs to be done only time and purpose is only to generate a so called linkkey which will be stored on both devices (phone and pump). Linkkey is generated using both mac addresses, pin code and some keys generated during pairing. So if we manage somehow to pair pump with one device and then move this linkkey to another device then pump will accept pairing from second device! This took my some time but it works! This is what I will explan in this readme.
 
 What you need:
-- one phone with android 4.1 or any LineageOS 14.1 (phone 1)
+- one phone with android 4.1 or any LineageOS 14.1 (should be a Samsung phone) (phone 1)
 - Phone you want to use with your pump, what ever the Android version (phone 2)
 - Attention: both phones need to be rooted!
 - Both phones with ruffy installed: https://github.com/monkey-r/ruffy
@@ -21,48 +21,64 @@ What you need:
 Howto:
 - Note bluetooh MAC address from phone 2 (Settings/About phone/State/Bluetooth address)
 - Switch off Bluetooth on both phones
-- On phone 1, modify Bluetooth MAC address to the one from phone 2
-```
-adb shell
-su
-vi /efs/bluetooth/bt_addr
-'insert'
--> change MAC
-:wq
-```
+- Samsung: 
+  - On phone 1, modify Bluetooth MAC address to the one from phone 2
+  ```
+  adb shell
+  su
+  vi /efs/bluetooth/bt_addr
+  'insert'
+  -> change MAC
+  :wq
+  ```
+  or 
+  - copy the File with a root Filemanader (like total commander) direct on the Smartphone to SDCard, modify the MAC there, and copy it back to the old place (this is related due to linux authorisation restriction that copy is possible direct, but not modifying). This way is may in the case that no vi is avalible in the adb shell.
+
+- other then Samsung alike phone: the described way will work only on a Samsung (or similar) Phone due to the way how efs is attached in the root directory. Phones with a other partition-style please consult Google to find a proper way of blutooth MAC spoofing for the specific phone. For Lineageos 14.1 standard free modules did not work (like xposed).May paid versions are better, but no knowledge up to now. For Android 4.1 it may work.
+
 - Reboot phone 1
 
 - Enable Bluetooth on phone 1
 - Check that phone 1 has Mac @ from phone 2
 - Pair phone 1 with Combo pump as stated into ruffy
-- Note Combo MAC address (displayed into ruffy log window right at the beginning)
-- Open terminal
-```
-adb shell
-su
-cat /data/misc/bluetoothd/[new MAC address]/linkkeys
-XX:XX:XX:XX:XX:XX 1D44B76C0CCDD88357073475C7D13B6D 4 0
-```
+- a) Android 4.1:
+  - Note Combo MAC address (displayed into ruffy log window right at the beginning)
+  - Open terminal
+  ```
+  adb shell
+  su
+  cat /data/misc/bluetoothd/[new MAC address]/linkkeys
+  XX:XX:XX:XX:XX:XX 1D44B76C0CCDD88357073475C7D13B6D 4 0
+  ```
 
-16 bytes number is the linkkey, note the linkkey corresponding to Combo MAC address:
-```
-1D44B76C0CCDD88357073475C7D13B6D
-```
+  16 bytes number is the linkkey, note the linkkey corresponding to Combo MAC address:
+  ```
+  1D44B76C0CCDD88357073475C7D13B6D
+  ```
 
-Make lower case:
-```
-1d44b76c0ccdd88357073475c7d13b6d
-```
+  Make lower case:
+  ```
+  1d44b76c0ccdd88357073475c7d13b6d
+  ```
 
-Swap bytewise reverse order:
-```
-6d3bd1c77534075783d8cd0c6cb7441d
-```
-![alt text](http://i.imgur.com/IMmUu0g.png)
+  Swap bytewise reverse order:
+  ```
+  6d3bd1c77534075783d8cd0c6cb7441d
+  ```
+  ![alt text](http://i.imgur.com/IMmUu0g.png)
 
+- Lineageos 14.1:
+  - Output the linkkey directly from the file /data/misc/bluedroid/bt_config.conf
+  ```
+  adb shell
+  su
+  cat /data/misc/bluedroid/bt_config.conf
+  ```
+  - write down or copy the complete line LinkKey = .......................
+    Remark: did not use the complete file as it looks like easy and similar. Only this one line has to be included in the steps later
 - Disable BT on phone 1
 - Kill ruffy
-- Copy from phone 1 /data/data/org.monkey.d.ruffy.ruffy/shared_prefs/pumpdata.xml to same location on phone 2
+- Copy from phone 1 the complete directory /data/data/org.monkey.d.ruffy.ruffy/ to same location on phone 2
 - [OR] you may want to use Titanium Backup and backup data from ruffy, transfer backup to phone 2 and restore it
 * When I do it, I use dropbox to upload/download backup file (only data)
 
