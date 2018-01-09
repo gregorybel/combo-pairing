@@ -32,9 +32,9 @@ Howto:
   :wq
   ```
   or 
-  - copy the File with a root Filemanader (like total commander) direct on the Smartphone to SDCard, modify the MAC there, and copy it back to the old place (this is related due to linux authorisation restriction that copy is possible direct, but not modifying). This way is may in the case that no vi is avalible in the adb shell.
+  - copy the File with a root Filemanager (like total commander) direct on the Smartphone to SDCard, modify the MAC there, and copy it back to the old place (this is related due to linux authorisation restriction that copy is possible direct, but not modifying). This way is may in the case that no vi is available in the adb shell.
 
-- other then Samsung alike phone: the described way will work only on a Samsung (or similar) Phone due to the way how efs is attached in the root directory. Phones with a other partition-style please consult Google to find a proper way of blutooth MAC spoofing for the specific phone. For Lineageos 14.1 standard free modules did not work (like xposed).May paid versions are better, but no knowledge up to now. For Android 4.1 it may work.
+- other then Samsung alike phone: the described way will work only on a Samsung (or similar) Phone due to the way how efs is attached in the root directory. Phones with a other partition-style please consult Google to find a proper way of bluetooth MAC spoofing for the specific phone. For Lineageos 14.1 standard free modules did not work (like xposed). Maybe paid versions are better, but no knowledge up to now. For Android 4.1 it mays work.
 
 - Reboot phone 1
 
