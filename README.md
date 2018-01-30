@@ -106,6 +106,33 @@ LinkKey = 6d3bd1c77534075783d8cd0c6cb7441d
 Service = 00001101-0000-1000-8000-00805f9b34fb 00000000-0000-1000-8000-00805f9b3
 ```
 
+or on Android 6:
+
+```
+adb shell
+su
+vi /data/misc/bluedroid/bt_config.xml
+```
+
+Past this after having modified COMBO_MAC_LOWER_CASE and Linkkey:
+
+```
+<N1 Tag="00:0e:2f:xx:xx:xx">
+        <N1 Tag="Timestamp" Type="int">1398527119</N1>
+        <N2 Tag="Name" Type="string">SpiritCombo</N2>
+        <N3 Tag="DevClass" Type="int">001f00</N3>
+        <N4 Tag="DevType" Type="int">1</N4>
+        <N5 Tag="AddrType" Type="int">0</N5>
+        <N6 Tag="Manufacturer" Type="int">0</N6>
+        <N7 Tag="LmpVer" Type="int">0</N7>
+        <N8 Tag="LmpSubVer" Type="int">0</N8>
+        <N9 Tag="LinkKeyType" Type="int">0</N9>
+        <N10 Tag="PinLength" Type="int">16</N10>
+        <N11 Tag="LinkKey" Type="binary">6d3bd1c77534075783d8cd0c6cb7441d</N11>
+        <N12 Tag="Service" Type="string">00001101-0000-1000-8000-00805f9b34fb 00000000-0000-1000-8000-00805f9b3</N12>
+ </N1>
+ ```
+
 Exit vi and save: ':wq'
 
 - reboot
