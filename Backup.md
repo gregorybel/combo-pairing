@@ -29,6 +29,6 @@ While switching between branches and upgrading, it may help to keep a backup of 
      3. The resulting tar archive can be examined or unpacked with `tar` (use `-x` to unpack)
      
  1. The Bluetooth pairing information can be fetched for safekeeping off-phone:
- ```
- adb pull /data/misc/bluedroid/bt_config.conf
- ```
+    ```
+    adb pull /data/misc/bluedroid/bt_config.conf
+    ```
