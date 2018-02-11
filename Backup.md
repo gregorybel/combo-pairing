@@ -13,7 +13,7 @@ While switching between branches and upgrading, it may help to keep a backup of 
    ```
 1. That `ab` archive can be checked/unpacked using either specialized tools, or the generic commandline:
    ```
-   $ dd if=monkey.d.ruffy-1.ab  bs=24 skip=1 | perl -MCompress::Zlib -e 'undef $/; print uncompress(<>)' | tar -tvf -
+   $ dd if=monkey.d.ruffy-1.ab  bs=24 skip=1 | unpigz | tar -tvf -
    36+1 records in
    36+1 records out
    877 bytes transferred in 0.000095 secs (9242223 bytes/sec)
@@ -21,10 +21,10 @@ While switching between branches and upgrading, it may help to keep a backup of 
    -rw-rw----  0 10096  10096     441 Feb 11 16:41 apps/org.monkey.d.ruffy.ruffy/sp/pumpdata.xml 
    ```
      1. The first 24 bytes of the file are skipped
-     2. Zlib is applied to uncompress the content. Alternative ways to achieve this (just slot into the second part of the pipe):
+     2. Zlib is applied to uncompress the content. If `pigz` isn't installed, there are a few generic alternative ways to achieve this task - just slot into the second part of the pipe:
        * `python -c "import zlib,sys;sys.stdout.write(zlib.decompress(sys.stdin.read()))"`
        * `perl -MCompress::Zlib -e 'undef $/; print uncompress(<>)'`
-       * if `pigz` is installed, `unpigz` (same as `pigz -d`) will do the job
+       * if `pigz` is installed, `unpigz` (same as `pigz -d`)
        * any other ideas? 
      3. The resulting tar archive can be examined or unpacked with `tar` (use `-x` to unpack)
      
