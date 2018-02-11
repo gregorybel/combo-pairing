@@ -1,4 +1,4 @@
-#Keeping a Backup of the Pairing Data#
+# Keeping a Backup of the Pairing Data
 
 While switching between branches and upgrading, it may help to keep a backup of the pairing data.
 1.  retrieve a list of the installed user-level apks: 
@@ -21,10 +21,11 @@ While switching between branches and upgrading, it may help to keep a backup of 
    -rw-rw----  0 10096  10096     441 Feb 11 16:41 apps/org.monkey.d.ruffy.ruffy/sp/pumpdata.xml 
    ```
      1. The first 24 bytes of the file are skipped
-     2. Zlib is applied to uncompress the content
+     2. Zlib is applied to uncompress the content. Alternative ways to achieve this (just slot into the second part of the pipe):
        * `python -c "import zlib,sys;sys.stdout.write(zlib.decompress(sys.stdin.read()))"`
        * `perl -MCompress::Zlib -e 'undef $/; print uncompress(<>)'`
-       * other ideas? 
+       * if `pigz` is installed, `unpigz` (same as `pigz -d`) will do the job
+       * any other ideas? 
      3. The resulting tar archive can be examined or unpacked with `tar` (use `-x` to unpack)
      
  1. The Bluetooth pairing information can be fetched for safekeeping off-phone:
