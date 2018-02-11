@@ -13,7 +13,7 @@ While switching between branches and upgrading, it may help to keep a backup of 
    ```
 1. That `ab` archive can be checked/unpacked using either specialized tools, or the generic commandline:
    ```
-   $ dd if=../monkey.d.ruffy-1.ab  bs=24 skip=1 | perl -MCompress::Zlib -e 'undef $/; print uncompress(<>)' | tar -tvf -
+   $ dd if=monkey.d.ruffy-1.ab  bs=24 skip=1 | perl -MCompress::Zlib -e 'undef $/; print uncompress(<>)' | tar -tvf -
    36+1 records in
    36+1 records out
    877 bytes transferred in 0.000095 secs (9242223 bytes/sec)
