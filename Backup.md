@@ -32,3 +32,9 @@ While switching between branches and upgrading, it may help to keep a backup of 
     ```
     adb pull /data/misc/bluedroid/bt_config.conf
     ```
+1. Same with *AndroidAPS* configuration data 
+   * `Export Settings` from within AndroidAPS
+   * Fetch the file - I prefer adding yyyy-mm-dd to the filename to keep track of versions. YMMV :)
+     ```
+     adb pull /storage/emulated/0/AndroidAPSPreferences AndroidAPSPreferences-2018-02-13
+     ```
