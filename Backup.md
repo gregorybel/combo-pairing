@@ -30,7 +30,7 @@ While switching between branches and upgrading, it may help to keep a backup of 
        * any other ideas? 
      3. The resulting tar archive can be examined or unpacked with `tar` (use `-x` to unpack)
      
- 1. The Bluetooth pairing information can be fetched for safekeeping off-phone:
+ 1. The Bluetooth pairing information can be fetched for safekeeping off-phone. Example from Lineageos 14.1:
     ```
     adb pull /data/misc/bluedroid/bt_config.conf
     ```
