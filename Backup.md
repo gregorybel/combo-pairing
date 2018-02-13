@@ -6,11 +6,12 @@ While switching between branches and upgrading, it may help to keep a backup of 
     $ adb shell pm list packages -3 | grep ruffy
     package:org.monkey.d.ruffy.ruffy
     ```
-1. Backup (depending on version)
+1. Backup (Filename according to personal preference - in this example depending on version)
    ```
    $ adb backup -f monkey.d.ruffy-1.ab org.monkey.d.ruffy.ruffy
    $ adb backup -f monkey.d.ruffy-2.ab org.monkey.d.ruffy.ruffy-2
    ```
+   (To restore a backup: `adb restore monkey.d.ruffy-1.ab`
 1. That `ab` archive can be checked/unpacked using either specialized tools, or the generic commandline:
    ```
    $ dd if=monkey.d.ruffy-1.ab  bs=24 skip=1 | unpigz | tar -tvf -
