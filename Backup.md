@@ -6,7 +6,18 @@ While switching between branches and upgrading, it may help to keep a backup of 
     $ adb shell pm list packages -3 | grep ruffy
     package:org.monkey.d.ruffy.ruffy
     ```
-1. Backup of an apk's data - this does not include the apk itself. 
+1. Variant a), assuming a rooted phone:
+   * Copy the entire data directory of the application to your computer:
+     ```
+     adb root
+     adb pull /data/data/org.monkey.d.ruffy.ruffy
+     ```
+   * and restore it later or to a different phone
+     ```
+     adb push org.monkey.d.ruffy.ruffy /data/data
+     ```
+     
+1. Variant b), requesting the backup of an apk's data - this does not include the apk itself. 
    (Filename according to personal preference - in this example depending on version)
    ```
    $ adb backup -f monkey.d.ruffy-1.ab org.monkey.d.ruffy.ruffy
