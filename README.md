@@ -18,6 +18,9 @@ What you need:
 - Option: Titanium backup installed
 
 
+Note: before continuing you might want to backup your data first: https://github.com/gregorybel/combo-pairing/blob/master/Backup.md
+
+
 Howto:
 - Note bluetooh MAC address from phone 2 (Settings/About phone/State/Bluetooth address)
 - Switch off Bluetooth on both phones
@@ -81,6 +84,7 @@ Howto:
 - Copy from phone 1 the complete directory /data/data/org.monkey.d.ruffy.ruffy/ to same location on phone 2
 - [OR] you may want to use Titanium Backup and backup data from ruffy, transfer backup to phone 2 and restore it
 * When I do it, I use dropbox to upload/download backup file (only data)
+- [OR] you may want to look: https://github.com/gregorybel/combo-pairing/blob/master/Backup.md
 
 - Connect phone 2 to PC:
 ```
@@ -106,7 +110,7 @@ LinkKey = 6d3bd1c77534075783d8cd0c6cb7441d
 Service = 00001101-0000-1000-8000-00805f9b34fb 00000000-0000-1000-8000-00805f9b3
 ```
 
-or on Android 6:
+or on Android 5:
 
 ```
 adb shell
