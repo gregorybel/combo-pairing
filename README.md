@@ -77,11 +77,12 @@ Howto:
   su
   cat /data/misc/bluedroid/bt_config.conf
   ```
-  - write down or copy the complete line LinkKey = .......................
-    Remark: did not use the complete file as it looks like easy and similar. Only this one line has to be included in the steps later
+
+- Copy the section where it says "SpiritCombo", you will need it later on phone 2
 - Disable BT on phone 1
 - Kill ruffy
 - Copy from phone 1 the complete directory /data/data/org.monkey.d.ruffy.ruffy/ to same location on phone 2
+  Note: make sure the directory and its contents on phone 2 is NOT root owned, to check do ```ls -la /data/data/org.monkey.d.ruffy.ruffy``` , if yes do ```chown app_111:app_111 /data/data/org.monkey.d.ruffy.ruffy/*``` (or whatever the app owner is)
 - [OR] you may want to use Titanium Backup and backup data from ruffy, transfer backup to phone 2 and restore it
 * When I do it, I use dropbox to upload/download backup file (only data)
 - [OR] you may want to look: https://github.com/gregorybel/combo-pairing/blob/master/Backup.md
@@ -137,14 +138,35 @@ Past this after having modified COMBO_MAC_LOWER_CASE and Linkkey:
  </N1>
  ```
 
+on LOS 14.1 or any rooted Android 7.1.x device 
+go to the end of the file and paste the conten you copy from phone 1 from /data/misc/bluedroid/bt_config.conf
+
+```
+[XX:XX:XX:XX:XX:XX]
+Timestamp = 1476801455
+DevClass = 001f00
+DevType = 1
+AddrType = 0
+Manufacturer = 0
+LmpVer = 0
+LmpSubVer = 0
+Name = SpiritCombo
+LinkKeyType = 0
+PinLength = 16
+LinkKey = 6d3bd1c77534075783d8cd0c6cb7441d
+Service = 00001101-0000-1000-8000-00805f9b34fb 00000000-0000-1000-8000-00805f9b3
+```
+
 Exit vi and save: ':wq'
 
+- dont enable BT yet or /data/misc/bluedroid/bt_config.conf will be overwriten 
 - reboot
 - reenable BT on phone 2
 - Into the BT settings, you should see a new device "SpiritCombo"
 - Kill ruffy
-- copy /data/data/org.monkey.d.ruffy.ruffy/shared_prefs/pumpdata.xml on phone 2 (if no yet done)
+- copy /data/data/org.monkey.d.ruffy.ruffy/shared_prefs/pumpdata.xml on phone 2 (if no yet done) and make sure the directory and its contents on phone 2 is NOT root owned, to check do ```ls -la /data/data/org.monkey.d.ruffy.ruffy``` , if yes do ```chown app_111:app_111 /data/data/org.monkey.d.ruffy.ruffy/*``` (or whatever the app owner is)
 - Open ruffy and click "connect"
+- if ruffy crashes then maybe pumpdata.xml and its parent directorys or just one directory still is owned by root 
 - Phone 2 should be connected to pump!
 
 If not working, let me know on gitter!
