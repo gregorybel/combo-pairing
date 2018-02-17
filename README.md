@@ -26,6 +26,7 @@ Howto:
 - Switch off Bluetooth on both phones
 - Samsung: 
   - On phone 1, modify Bluetooth MAC address to the one from phone 2
+  - change BT name on phone 1 to the same BT name you have on phone 2 (to change the name, BT has to be on)
   ```
   adb shell
   su
