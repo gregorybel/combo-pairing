@@ -37,7 +37,8 @@ Howto:
   :wq
   ```
   - Huawei:
-     ```
+  
+  ```
   adb shell
   su
   vi /data/misc/bluedroid/macbt
@@ -45,7 +46,7 @@ Howto:
   -> change MAC
   :wq
   ```
-  
+
   or 
   - copy the File with a root Filemanager (like total commander) direct on the Smartphone to SDCard, modify the MAC there, and copy it back to the old place (this is related due to linux authorisation restriction that copy is possible direct, but not modifying). This way is may in the case that no vi is available in the adb shell.
 
