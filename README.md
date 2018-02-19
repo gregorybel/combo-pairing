@@ -10,7 +10,7 @@ Concept to move away from this problem:
 Pairing needs to be done only time and purpose is only to generate a so called linkkey which will be stored on both devices (phone and pump). Linkkey is generated using both mac addresses, pin code and some keys generated during pairing. So if we manage somehow to pair pump with one device and then move this linkkey to another device then pump will accept pairing from second device! This took my some time but it works! This is what I will explan in this readme.
 
 What you need:
-- one phone with android 4.1 or any LineageOS 14.1 (should be a Samsung phone) (phone 1)
+- one phone with android 4.1 or any LineageOS 14.1 (better with a Samsung phone) (phone 1)
 - Phone you want to use with your pump, what ever the Android version (phone 2)
 - Attention: both phones need to be rooted!
 - Both phones with ruffy installed: https://github.com/monkey-r/ruffy
@@ -23,10 +23,11 @@ Note: before continuing you might want to backup your data first: https://github
 
 Howto:
 - Note bluetooh MAC address from phone 2 (Settings/About phone/State/Bluetooth address)
+- Note Bluetooth MAC address from phone 1 too (if you want to set it back later)
 - Switch off Bluetooth on both phones
 - Samsung: 
   - On phone 1, modify Bluetooth MAC address to the one from phone 2
-  - change BT name on phone 1 to the same BT name you have on phone 2 (to change the name, BT has to be on)
+  - Optional: change BT name on phone 1 to the same BT name you have on phone 2 (to change the name, BT has to be on)
   ```
   adb shell
   su
@@ -35,6 +36,16 @@ Howto:
   -> change MAC
   :wq
   ```
+  - Huawei:
+     ```
+  adb shell
+  su
+  vi /data/misc/bluedroid/macbt
+  'insert'
+  -> change MAC
+  :wq
+  ```
+  
   or 
   - copy the File with a root Filemanager (like total commander) direct on the Smartphone to SDCard, modify the MAC there, and copy it back to the old place (this is related due to linux authorisation restriction that copy is possible direct, but not modifying). This way is may in the case that no vi is available in the adb shell.
 
@@ -80,7 +91,7 @@ Howto:
   ```
 
 - Copy the section where it says "SpiritCombo", you will need it later on phone 2
-- Disable BT on phone 1
+- Disable BT on phone 1 or switch-off phone 1 and make it is not around the pump or write back original mac address
 - Kill ruffy
 - Copy from phone 1 the complete directory /data/data/org.monkey.d.ruffy.ruffy/ to same location on phone 2
   Note: make sure the directory and its contents on phone 2 is NOT root owned, to check do ```ls -la /data/data/org.monkey.d.ruffy.ruffy``` , if yes do ```chown app_111:app_111 /data/data/org.monkey.d.ruffy.ruffy/*``` (or whatever the app owner is)
