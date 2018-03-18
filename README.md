@@ -16,6 +16,7 @@ What you need:
 - Both phones with ruffy installed: https://github.com/monkey-r/ruffy
 - Developer mode and debug over USB activated
 - Option: Titanium backup installed
+- Option: If you don't own phone with compatible OS (Phone 1), you can achieve similar results by installing Lineage OS onto VM and do pairing there. You can follow this [step by step instructions](https://github.com/andyrozman/combo-pairing-vm). So instead of following instructions here for Phone 1, you can follow them in that document, and after you have everything you need, you return here to get your phone (Phone 2) working.
 
 
 Note: before continuing you might want to backup your data first: https://github.com/gregorybel/combo-pairing/blob/master/Backup.md
