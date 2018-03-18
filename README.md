@@ -66,7 +66,7 @@ exit
 - Disable Bluetooth
 - Enable Usb storage access and copy files from directory `Bluetooth/original` to local computer
 - Open `btmac` in editor that supports unix line breaks and modify Bluetooth MAC address to Bluetooth mac address of phone 2. Be sure to use all capital letters and save changes
-* open `bt_config.conf` in editor that supports unix line breaks. Within the `[Adapter]` section,  modify the line `Address = 12:ab:34:cd:e5:6f` to the Bluetooth MAC address (this time all non-capital letters) of phone 2 and save
+* open `bt_config.conf` in editor that supports unix line breaks. Within the `[Adapter]` section,  modify the line `Address = 12:ab:34:cd:e5:6f` to the Bluetooth MAC address of phone 2 (this time all lower case letters) and save
 - With your computer, create new directory `modified` under Bluetoooth on the smartphone
 - copy the modified files `btmac` and `bt_config.conf` to directory `Bluetooth/modified`
 
@@ -147,24 +147,8 @@ vi /data/misc/bluedroid/bt_config.conf
 
 On Huawei phones with no vi editor available, re-apply the approach described above to copy the file to your local computer, edit it there and copy it back onto the phone.
 
-Past this after having modified COMBO_MAC_LOWER_CASE and Linkkey:
-```
-[XX:XX:XX:XX:XX:XX]
-Timestamp = 1476801455
-DevClass = 001f00
-DevType = 1
-AddrType = 0
-Manufacturer = 0
-LmpVer = 0
-LmpSubVer = 0
-Name = SpiritCombo
-LinkKeyType = 0
-PinLength = 16
-LinkKey = 6d3bd1c77534075783d8cd0c6cb7441d
-Service = 00001101-0000-1000-8000-00805f9b34fb 00000000-0000-1000-8000-00805f9b3
-```
 
-or on Android 5:
+#### On Android 5:
 
 ```
 adb shell
@@ -172,7 +156,7 @@ su
 vi /data/misc/bluedroid/bt_config.xml
 ```
 
-Past this after having modified COMBO_MAC_LOWER_CASE and Linkkey:
+Past this after having modified `00:0e:2f:xx:xx:xx`to the Combo Bluetooth MAC address (all in lower case letters) and Linkkey:
 
 ```
 <N1 Tag="00:0e:2f:xx:xx:xx">
@@ -191,11 +175,11 @@ Past this after having modified COMBO_MAC_LOWER_CASE and Linkkey:
  </N1>
  ```
 
-on LOS 14.1 or any rooted Android 7.1.x device 
-go to the end of the file and paste the content you copied from phone 1 from /data/misc/bluedroid/bt_config.conf (reference point X)
+#### On LineageOS 14.1 or any rooted Android 7.1.x device 
+go to the end of the file and paste the contents you copied from phone 1 from /data/misc/bluedroid/bt_config.conf (reference point X). The section will look similar to this one:
 
 ```
-[XX:XX:XX:XX:XX:XX]
+[00:0e:2f:34:5e:f6]
 Timestamp = 1476801455
 DevClass = 001f00
 DevType = 1
@@ -210,12 +194,30 @@ LinkKey = 6d3bd1c77534075783d8cd0c6cb7441d
 Service = 00001101-0000-1000-8000-00805f9b34fb 00000000-0000-1000-8000-00805f9b3
 ```
 
-Exit vi and save: ':wq'
-
-- dont enable BT yet or /data/misc/bluedroid/bt_config.conf will be overwriten 
-- reboot phone 2
+#### For any other Android versions
+Paste this after having modified the 00:0e:2f:XX:XX:XX to the Combo Bluetooth MAC address (all in lower case letters) and Linkkey:
+```
+[00:0e:2f:XX:XX:XX]
+Timestamp = 1476801455
+DevClass = 001f00
+DevType = 1
+AddrType = 0
+Manufacturer = 0
+LmpVer = 0
+LmpSubVer = 0
+Name = SpiritCombo
+LinkKeyType = 0
+PinLength = 16
+LinkKey = 6d3bd1c77534075783d8cd0c6cb7441d
+Service = 00001101-0000-1000-8000-00805f9b34fb 00000000-0000-1000-8000-00805f9b3
+```
 
 ### Finalize Ruffy configuration on phone 2
+- If you have used vi for modifying files in the previous step, exit vi and save: ':wq'
+- If you have modified files on your local computer, make sure to copy them back to their original location on the phone
+- **don't enable BT yet** or /data/misc/bluedroid/bt_config.conf will be overwriten 
+- reboot phone 2
+
 - reenable BT on phone 2
 - Into the BT settings, you should see a new device "SpiritCombo"
 - Kill ruffy
